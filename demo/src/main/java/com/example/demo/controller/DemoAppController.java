@@ -12,9 +12,12 @@ import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.QueryService;
 
 @RestController
 public class DemoAppController {
+	
+	QueryService servive;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -78,6 +81,12 @@ public class DemoAppController {
     	
     	this.userRepository.save(kyAn);
     	
+    }
+    
+    @ResponseBody
+    @RequestMapping("/getOr")
+    public List<User> getOr() {
+    	return servive.roleUserOrTest();
     }
     
 }
